@@ -37,12 +37,32 @@ namespace YMNTemplate
 
         #region ***** privateメソッド ***** 
 
+        /// <summary>
+        /// ダイアログを開いてファイル選択
+        /// </summary>
+        /// <param name="textBox"></param>
+        private static void SelectFile(TextBox textBox)
+        {
+            if (textBox == null)
+            {
+                return;
+            }
+
+            using (OpenFileDialog fileDialog = new OpenFileDialog())
+            {
+                if (fileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    textBox.Text = fileDialog.FileName;
+                }
+            }
+        }
+
         #endregion
 
         #region ***** イベント ***** 
 
         /// <summary>
-        /// 
+        /// 変換ボタンクリック時
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -52,7 +72,7 @@ namespace YMNTemplate
         }
  
         /// <summary>
-        /// 
+        /// コピーボタンクリック時
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -62,7 +82,7 @@ namespace YMNTemplate
         }
  
         /// <summary>
-        /// 
+        /// テキストボックスにファイルがドラッグ時
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -72,7 +92,7 @@ namespace YMNTemplate
         }
 
         /// <summary>
-        /// 
+        /// テキストボックスにファイルがドラッグ完了時
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -84,7 +104,28 @@ namespace YMNTemplate
             textBox.Text = files[0];
         }
 
+        /// <summary>
+        /// テンプレートファイル選択ボタンクリック時
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void templateSelectButton_Click(object sender, EventArgs e)
+        {
+            SelectFile(templateTextBox);
+        }
+
+        /// <summary>
+        /// データファイル選択ボタンクリック時
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dataSelectButton_Click(object sender, EventArgs e)
+        {
+            SelectFile(dataTextBox);
+        }
+
         #endregion
+
 
     }
 }

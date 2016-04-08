@@ -35,6 +35,8 @@
             this.convertButton = new System.Windows.Forms.Button();
             this.convertTextBox = new System.Windows.Forms.TextBox();
             this.copyButton = new System.Windows.Forms.Button();
+            this.templateSelectButton = new System.Windows.Forms.Button();
+            this.dataSelectButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -49,7 +51,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(39, 34);
+            this.label2.Location = new System.Drawing.Point(39, 38);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(67, 12);
             this.label2.TabIndex = 1;
@@ -62,7 +64,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.templateTextBox.Location = new System.Drawing.Point(112, 6);
             this.templateTextBox.Name = "templateTextBox";
-            this.templateTextBox.Size = new System.Drawing.Size(471, 19);
+            this.templateTextBox.Size = new System.Drawing.Size(389, 19);
             this.templateTextBox.TabIndex = 2;
             this.templateTextBox.DragDrop += new System.Windows.Forms.DragEventHandler(this.fileTextBox_DragDrop);
             this.templateTextBox.DragEnter += new System.Windows.Forms.DragEventHandler(this.fileTextBox_DragEnter);
@@ -72,16 +74,16 @@
             this.dataTextBox.AllowDrop = true;
             this.dataTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataTextBox.Location = new System.Drawing.Point(112, 31);
+            this.dataTextBox.Location = new System.Drawing.Point(112, 35);
             this.dataTextBox.Name = "dataTextBox";
-            this.dataTextBox.Size = new System.Drawing.Size(471, 19);
+            this.dataTextBox.Size = new System.Drawing.Size(389, 19);
             this.dataTextBox.TabIndex = 3;
             this.dataTextBox.DragDrop += new System.Windows.Forms.DragEventHandler(this.fileTextBox_DragDrop);
             this.dataTextBox.DragEnter += new System.Windows.Forms.DragEventHandler(this.fileTextBox_DragEnter);
             // 
             // convertButton
             // 
-            this.convertButton.Location = new System.Drawing.Point(6, 56);
+            this.convertButton.Location = new System.Drawing.Point(6, 60);
             this.convertButton.Name = "convertButton";
             this.convertButton.Size = new System.Drawing.Size(75, 23);
             this.convertButton.TabIndex = 4;
@@ -94,15 +96,15 @@
             this.convertTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.convertTextBox.Location = new System.Drawing.Point(6, 85);
+            this.convertTextBox.Location = new System.Drawing.Point(6, 89);
             this.convertTextBox.Multiline = true;
             this.convertTextBox.Name = "convertTextBox";
-            this.convertTextBox.Size = new System.Drawing.Size(577, 409);
+            this.convertTextBox.Size = new System.Drawing.Size(577, 422);
             this.convertTextBox.TabIndex = 5;
             // 
             // copyButton
             // 
-            this.copyButton.Location = new System.Drawing.Point(87, 56);
+            this.copyButton.Location = new System.Drawing.Point(87, 60);
             this.copyButton.Name = "copyButton";
             this.copyButton.Size = new System.Drawing.Size(75, 23);
             this.copyButton.TabIndex = 6;
@@ -110,11 +112,33 @@
             this.copyButton.UseVisualStyleBackColor = true;
             this.copyButton.Click += new System.EventHandler(this.copyButton_Click);
             // 
+            // templateSelectButton
+            // 
+            this.templateSelectButton.Location = new System.Drawing.Point(507, 4);
+            this.templateSelectButton.Name = "templateSelectButton";
+            this.templateSelectButton.Size = new System.Drawing.Size(75, 23);
+            this.templateSelectButton.TabIndex = 7;
+            this.templateSelectButton.Text = "選択";
+            this.templateSelectButton.UseVisualStyleBackColor = true;
+            this.templateSelectButton.Click += new System.EventHandler(this.templateSelectButton_Click);
+            // 
+            // dataSelectButton
+            // 
+            this.dataSelectButton.Location = new System.Drawing.Point(507, 33);
+            this.dataSelectButton.Name = "dataSelectButton";
+            this.dataSelectButton.Size = new System.Drawing.Size(75, 23);
+            this.dataSelectButton.TabIndex = 8;
+            this.dataSelectButton.Text = "選択";
+            this.dataSelectButton.UseVisualStyleBackColor = true;
+            this.dataSelectButton.Click += new System.EventHandler(this.dataSelectButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(595, 506);
+            this.ClientSize = new System.Drawing.Size(595, 523);
+            this.Controls.Add(this.dataSelectButton);
+            this.Controls.Add(this.templateSelectButton);
             this.Controls.Add(this.copyButton);
             this.Controls.Add(this.convertTextBox);
             this.Controls.Add(this.convertButton);
@@ -138,6 +162,8 @@
         private System.Windows.Forms.Button convertButton;
         private System.Windows.Forms.TextBox convertTextBox;
         private System.Windows.Forms.Button copyButton;
+        private System.Windows.Forms.Button templateSelectButton;
+        private System.Windows.Forms.Button dataSelectButton;
     }
 }
 
