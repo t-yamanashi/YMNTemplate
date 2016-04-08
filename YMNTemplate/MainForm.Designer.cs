@@ -116,6 +116,7 @@
             // 
             // templateSelectButton
             // 
+            this.templateSelectButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.templateSelectButton.Location = new System.Drawing.Point(507, 4);
             this.templateSelectButton.Name = "templateSelectButton";
             this.templateSelectButton.Size = new System.Drawing.Size(75, 23);
@@ -126,6 +127,7 @@
             // 
             // dataSelectButton
             // 
+            this.dataSelectButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dataSelectButton.Location = new System.Drawing.Point(507, 33);
             this.dataSelectButton.Name = "dataSelectButton";
             this.dataSelectButton.Size = new System.Drawing.Size(75, 23);

@@ -87,6 +87,7 @@ namespace YMNTemplate
             if (conv.Convert(enc, templateTextBox.Text, dataTextBox.Text))
             {
                 convertTextBox.Text = conv.GetConvertText();
+                return;
             }
             MessageBox.Show(conv.GetErrorMessage(), "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }

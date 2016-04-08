@@ -46,13 +46,29 @@ namespace YMNTemplate
         {
             string template = string.Empty;
             string data = string.Empty;
-
             errMsg.Clear();
             _convertText = string.Empty;
+            _enc = enc;
+            bool errFlg = false;
 
-            if (enc == null)
+            if (_enc == null)
             {
                 errMsg.AppendLine("読込ファイル形式の指定に誤りがあります。");
+                errFlg = true;
+            }
+     
+            if (FileExists(templateFile, "テンプレートファイル") == false)
+            {
+                errFlg = true;
+            }
+
+            if (FileExists(dataFile, "データファイル") == false)
+            {
+                errFlg = true;
+            }
+
+            if (errFlg)
+            {
                 return false;
             }
 
@@ -69,6 +85,8 @@ namespace YMNTemplate
             _convertText = template;
             return true;
         }
+
+
 
         /// <summary>
         /// エラーメッセージ取得
@@ -93,6 +111,28 @@ namespace YMNTemplate
         #region ***** privateメソッド ***** 
 
         /// <summary>
+        /// ファイル存在チェック
+        /// </summary>
+        /// <param name="templateFile"></param>
+        /// <param name="msg"></param>
+        /// <returns></returns>
+        private bool FileExists(string templateFile, string msg)
+        {
+            if (templateFile.Length == 0)
+            {
+                errMsg.AppendLine(msg + "は指定されていません。");
+                return false;
+            }
+            if (File.Exists(templateFile) == false)
+            {
+                errMsg.AppendLine(msg + "は存在していません。");
+                return false;
+            }
+
+            return true;
+        }
+
+        /// <summary>
         /// ファイル読込
         /// </summary>
         /// <param name="filename"></param>
@@ -101,6 +141,12 @@ namespace YMNTemplate
         { 
             StreamReader sr = null;
             body = string.Empty;
+            if (_enc == null)
+            {
+                errMsg.AppendLine("読込ファイル形式の指定に誤りがあります。");
+                return false;
+            }
+
             try
             {
                 sr = new StreamReader(filename, _enc);
