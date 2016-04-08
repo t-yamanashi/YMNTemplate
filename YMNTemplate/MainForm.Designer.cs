@@ -37,6 +37,8 @@
             this.copyButton = new System.Windows.Forms.Button();
             this.templateSelectButton = new System.Windows.Forms.Button();
             this.dataSelectButton = new System.Windows.Forms.Button();
+            this.fileFormatComboBox = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -83,7 +85,7 @@
             // 
             // convertButton
             // 
-            this.convertButton.Location = new System.Drawing.Point(6, 60);
+            this.convertButton.Location = new System.Drawing.Point(6, 92);
             this.convertButton.Name = "convertButton";
             this.convertButton.Size = new System.Drawing.Size(75, 23);
             this.convertButton.TabIndex = 4;
@@ -96,15 +98,15 @@
             this.convertTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.convertTextBox.Location = new System.Drawing.Point(6, 89);
+            this.convertTextBox.Location = new System.Drawing.Point(6, 121);
             this.convertTextBox.Multiline = true;
             this.convertTextBox.Name = "convertTextBox";
-            this.convertTextBox.Size = new System.Drawing.Size(577, 422);
+            this.convertTextBox.Size = new System.Drawing.Size(577, 390);
             this.convertTextBox.TabIndex = 5;
             // 
             // copyButton
             // 
-            this.copyButton.Location = new System.Drawing.Point(87, 60);
+            this.copyButton.Location = new System.Drawing.Point(87, 92);
             this.copyButton.Name = "copyButton";
             this.copyButton.Size = new System.Drawing.Size(75, 23);
             this.copyButton.TabIndex = 6;
@@ -132,11 +134,31 @@
             this.dataSelectButton.UseVisualStyleBackColor = true;
             this.dataSelectButton.Click += new System.EventHandler(this.dataSelectButton_Click);
             // 
+            // fileFormatComboBox
+            // 
+            this.fileFormatComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.fileFormatComboBox.FormattingEnabled = true;
+            this.fileFormatComboBox.Location = new System.Drawing.Point(112, 60);
+            this.fileFormatComboBox.Name = "fileFormatComboBox";
+            this.fileFormatComboBox.Size = new System.Drawing.Size(142, 20);
+            this.fileFormatComboBox.TabIndex = 9;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(19, 63);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(87, 12);
+            this.label3.TabIndex = 10;
+            this.label3.Text = "読込ファイル形式";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(595, 523);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.fileFormatComboBox);
             this.Controls.Add(this.dataSelectButton);
             this.Controls.Add(this.templateSelectButton);
             this.Controls.Add(this.copyButton);
@@ -148,6 +170,7 @@
             this.Controls.Add(this.label1);
             this.Name = "MainForm";
             this.Text = "YMNTemplate Ver 0.1";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -164,6 +187,8 @@
         private System.Windows.Forms.Button copyButton;
         private System.Windows.Forms.Button templateSelectButton;
         private System.Windows.Forms.Button dataSelectButton;
+        private System.Windows.Forms.ComboBox fileFormatComboBox;
+        private System.Windows.Forms.Label label3;
     }
 }
 

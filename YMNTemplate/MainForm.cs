@@ -6,6 +6,8 @@
  *************************************************************************************************/
 
 using System;
+using System.IO;
+using System.Text;
 using System.Windows.Forms;
 
 namespace YMNTemplate
@@ -62,13 +64,32 @@ namespace YMNTemplate
         #region ***** イベント ***** 
 
         /// <summary>
+        /// フォームロード
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            fileFormatComboBox.DisplayMember = "DispName";
+            fileFormatComboBox.ValueMember = "EncodingObject";
+            fileFormatComboBox.DataSource = FileFormat.GetFileFormatList();
+        }
+
+        /// <summary>
         /// 変換ボタンクリック時
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void convertButton_Click(object sender, EventArgs e)
         {
-
+            Encoding enc = fileFormatComboBox.SelectedValue as Encoding;
+            if (enc == null)
+            {
+                return;
+            }
+            StreamReader sr = new StreamReader(dataTextBox.Text, enc);
+            convertTextBox.Text = sr.ReadToEnd();
+            sr.Dispose();
         }
  
         /// <summary>
@@ -130,8 +151,9 @@ namespace YMNTemplate
             SelectFile(dataTextBox);
         }
 
+
         #endregion
 
-
+ 
     }
 }
