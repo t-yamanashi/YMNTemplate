@@ -5,11 +5,6 @@ VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YMNTemplate", "YMNTemplate\YMNTemplate.csproj", "{ED9732A5-9D03-4FBC-8455-AD3F61B8DEAC}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ZipFile", "ZipFile", "{CF4E9BE6-F6CC-4A03-B87A-5488F8808B1A}"
-	ProjectSection(SolutionItems) = preProject
-		..\..\..\..\Desktop\YMNTemplate_v0.1.zip = ..\..\..\..\Desktop\YMNTemplate_v0.1.zip
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
