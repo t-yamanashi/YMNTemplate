@@ -103,8 +103,6 @@ namespace YMNTemplate
             return true;
         }
 
-
-
         /// <summary>
         /// エラーメッセージ取得
         /// </summary>
