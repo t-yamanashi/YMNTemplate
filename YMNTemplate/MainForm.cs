@@ -99,8 +99,14 @@ namespace YMNTemplate
         private void fileTextBox_DragDrop(object sender, DragEventArgs e)
         {
             TextBox textBox = sender as TextBox;
-            if (textBox == null) return;        
-            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+            if (textBox == null) return;
+            String[] files = e.Data.GetData(DataFormats.FileDrop) as String[];
+            if (files == null ||
+                files.Length != 1) 
+            {
+                return;
+            }
+
             textBox.Text = files[0];
         }
 
