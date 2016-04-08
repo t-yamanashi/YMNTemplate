@@ -25,6 +25,8 @@ namespace YMNTemplate
         /// </summary>
         StringBuilder errMsg = new StringBuilder();
 
+        string _convertText = string.Empty;
+
         #endregion
 
         #region ***** プロパティ ***** 
@@ -32,19 +34,58 @@ namespace YMNTemplate
         #endregion
 
         #region ***** publicメソッド ***** 
-        public string Convert(Encoding enc, string templateFile, string dataFile)
+
+        /// <summary>
+        /// 変換実行
+        /// </summary>
+        /// <param name="enc"></param>
+        /// <param name="templateFile"></param>
+        /// <param name="dataFile"></param>
+        /// <returns></returns>
+        public bool Convert(Encoding enc, string templateFile, string dataFile)
         {
-            string ret = string.Empty;
+            string template = string.Empty;
+            string data = string.Empty;
+
+            errMsg.Clear();
+            _convertText = string.Empty;
+
             if (enc == null)
             {
-                return ret;
-            }
-            if(ReadFile (dataFile, out ret) == false)
-            {
-                return ret;
+                errMsg.AppendLine("読込ファイル形式の指定に誤りがあります。");
+                return false;
             }
 
-            return ret;
+            if (ReadFile(dataFile, out data) == false)
+            {
+                return false;
+            }
+
+            if (ReadFile(templateFile, out template) == false)
+            {
+                return false;
+            }
+
+            _convertText = template;
+            return true;
+        }
+
+        /// <summary>
+        /// エラーメッセージ取得
+        /// </summary>
+        /// <returns></returns>
+        public string GetErrorMessage()
+        {
+            return errMsg.ToString();
+        }
+
+        /// <summary>
+        /// 変換結果取得
+        /// </summary>
+        /// <returns></returns>
+        public string GetConvertText()
+        {
+            return _convertText;
         }
 
         #endregion
@@ -81,12 +122,12 @@ namespace YMNTemplate
             return true;
         }
 
+
         #endregion
 
         #region ***** イベント ***** 
 
         #endregion
-
 
     }
 }

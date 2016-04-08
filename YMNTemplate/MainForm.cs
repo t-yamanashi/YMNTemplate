@@ -84,7 +84,11 @@ namespace YMNTemplate
         {
             Encoding enc = fileFormatComboBox.SelectedValue as Encoding;
             TextConvert conv = new TextConvert();
-            convertTextBox.Text = conv.Convert(enc, templateTextBox.Text, dataTextBox.Text);
+            if (conv.Convert(enc, templateTextBox.Text, dataTextBox.Text))
+            {
+                convertTextBox.Text = conv.GetConvertText();
+            }
+            MessageBox.Show(conv.GetErrorMessage(), "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
 
