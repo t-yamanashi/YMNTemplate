@@ -45,7 +45,7 @@ namespace YMNTemplate
         public bool Convert(Encoding enc, string templateFile, string dataFile)
         {
             string template = string.Empty;
-            string data = string.Empty;
+            string dataString = string.Empty;
             errMsg.Clear();
             _convertText = string.Empty;
             _enc = enc;
@@ -69,10 +69,10 @@ namespace YMNTemplate
 
             if (errFlg)
             {
-                return false;
+               return false;
             }
 
-            if (ReadFile(dataFile, out data) == false)
+            if (ReadFile(dataFile, out dataString) == false)
             {
                 return false;
             }
@@ -82,7 +82,24 @@ namespace YMNTemplate
                 return false;
             }
 
-            _convertText = template;
+            StringBuilder sb = new StringBuilder();
+
+            char[] sp = "\r\n".ToCharArray();
+            string[] dataLines = dataString.Split(sp);
+            foreach (var line in dataLines)
+            {
+                try
+                {
+                    string[] data = line.Split('\t');
+                    sb.Append(string.Format(template, data));
+                }
+                catch (System.Exception)
+                {
+                    // 現時点ではチェックは甘くする
+                }
+            }
+
+            _convertText = sb.ToString();
             return true;
         }
 
