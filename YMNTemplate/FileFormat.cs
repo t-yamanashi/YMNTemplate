@@ -1,15 +1,13 @@
 ﻿/**************************************************************************************************
- * システム名: YMNTemplate(テンプレートツール)
- * クラス名: MainForm
-* 役割: メイン画面
-* 作成者: 山梨智之
+* システム名: YMNTemplate(テンプレートツール)
+*   クラス名: MainForm
+*       役割: ファイルフォーマットクラス
+*     作成者: 山梨智之
 *************************************************************************************************/
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace YMNTemplate
 {
@@ -71,6 +69,9 @@ namespace YMNTemplate
             _encodingObject = encoding;
         }
 
+        /// <summary>
+        /// ファイルフォーマット一覧取得
+        /// </summary>
         public static List<FileFormat> GetFileFormatList()
         {
             List<FileFormat> list = new List<FileFormat>();

@@ -83,15 +83,11 @@ namespace YMNTemplate
         private void convertButton_Click(object sender, EventArgs e)
         {
             Encoding enc = fileFormatComboBox.SelectedValue as Encoding;
-            if (enc == null)
-            {
-                return;
-            }
-            StreamReader sr = new StreamReader(dataTextBox.Text, enc);
-            convertTextBox.Text = sr.ReadToEnd();
-            sr.Dispose();
+            TextConvert conv = new TextConvert();
+            convertTextBox.Text = conv.Convert(enc, templateTextBox.Text, dataTextBox.Text);
         }
- 
+
+
         /// <summary>
         /// コピーボタンクリック時
         /// </summary>
@@ -154,6 +150,5 @@ namespace YMNTemplate
 
         #endregion
 
- 
     }
 }
