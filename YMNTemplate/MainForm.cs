@@ -78,9 +78,9 @@ namespace YMNTemplate
         /// <param name="e"></param>
         private void copyButton_Click(object sender, EventArgs e)
         {
-
+            Clipboard.SetDataObject(convertTextBox.Text);
         }
- 
+
         /// <summary>
         /// テキストボックスにファイルがドラッグ時
         /// </summary>
