@@ -41,26 +41,47 @@ namespace YMNTemplate
 
         #region ***** イベント ***** 
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void convertButton_Click(object sender, EventArgs e)
         {
 
         }
  
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void copyButton_Click(object sender, EventArgs e)
         {
 
         }
  
-        private void templateTextBox_DragEnter(object sender, DragEventArgs e)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void fileTextBox_DragEnter(object sender, DragEventArgs e)
         {
             e.Effect = DragDropEffects.All;
-
         }
 
-        private void templateTextBox_DragDrop(object sender, DragEventArgs e)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void fileTextBox_DragDrop(object sender, DragEventArgs e)
         {
+            TextBox textBox = sender as TextBox;
+            if (textBox == null) return;        
             string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
-            Console.WriteLine(files[0]);
+            textBox.Text = files[0];
         }
 
         #endregion

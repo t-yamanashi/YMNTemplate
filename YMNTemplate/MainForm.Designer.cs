@@ -64,17 +64,20 @@
             this.templateTextBox.Name = "templateTextBox";
             this.templateTextBox.Size = new System.Drawing.Size(471, 19);
             this.templateTextBox.TabIndex = 2;
-            this.templateTextBox.DragDrop += new System.Windows.Forms.DragEventHandler(this.templateTextBox_DragDrop);
-            this.templateTextBox.DragEnter += new System.Windows.Forms.DragEventHandler(this.templateTextBox_DragEnter);
+            this.templateTextBox.DragDrop += new System.Windows.Forms.DragEventHandler(this.fileTextBox_DragDrop);
+            this.templateTextBox.DragEnter += new System.Windows.Forms.DragEventHandler(this.fileTextBox_DragEnter);
             // 
             // dataTextBox
             // 
+            this.dataTextBox.AllowDrop = true;
             this.dataTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataTextBox.Location = new System.Drawing.Point(112, 31);
             this.dataTextBox.Name = "dataTextBox";
             this.dataTextBox.Size = new System.Drawing.Size(471, 19);
             this.dataTextBox.TabIndex = 3;
+            this.dataTextBox.DragDrop += new System.Windows.Forms.DragEventHandler(this.fileTextBox_DragDrop);
+            this.dataTextBox.DragEnter += new System.Windows.Forms.DragEventHandler(this.fileTextBox_DragEnter);
             // 
             // convertButton
             // 
