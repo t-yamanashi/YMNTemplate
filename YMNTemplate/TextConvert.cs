@@ -23,13 +23,36 @@ namespace YMNTemplate
         /// <summary>
         /// エラーメッセージ
         /// </summary>
-        StringBuilder errMsg = new StringBuilder();
+        StringBuilder _errMsg = new StringBuilder();
 
+        /// <summary>
+        /// 結果
+        /// </summary>
         string _convertText = string.Empty;
+
+        /// <summary>
+        /// エラーチェック
+        /// </summary>
+        private bool _errorChecke = false;
 
         #endregion
 
         #region ***** プロパティ ***** 
+
+        /// <summary>
+        /// エラーチェック
+        /// </summary>
+        public bool ErrorChecke
+        {
+            get
+            {
+                return _errorChecke;
+            }
+            set
+            {
+                _errorChecke = value;
+            }
+        }
 
         #endregion
 
@@ -46,14 +69,14 @@ namespace YMNTemplate
         {
             string template = string.Empty;
             string dataString = string.Empty;
-            errMsg.Clear();
+            _errMsg.Clear();
             _convertText = string.Empty;
             _enc = enc;
             bool errFlg = false;
 
             if (_enc == null)
             {
-                errMsg.AppendLine("読込ファイル形式の指定に誤りがあります。");
+                _errMsg.AppendLine("読込ファイル形式の指定に誤りがあります。");
                 errFlg = true;
             }
      
@@ -83,22 +106,30 @@ namespace YMNTemplate
             }
 
             StringBuilder sb = new StringBuilder();
-
-            char[] sp = "\r\n".ToCharArray();
-            string[] dataLines = dataString.Split(sp);
+            dataString = dataString.Replace("\r\n", "\n");
+            dataString = dataString.Replace("\r", "\n");
+            string[] dataLines = dataString.Split('\n');
             foreach (var line in dataLines)
             {
+                if (line.Length == 0)
+                {
+                    continue;
+                }
+                string[] data = line.Split('\t');
+                string addData = string.Empty;
                 try
                 {
-                    string[] data = line.Split('\t');
-                    sb.Append(string.Format(template, data));
+                    addData = string.Format(template, data);  
                 }
                 catch (System.Exception)
                 {
-                    // 現時点ではチェックは甘くする
+                    if (_errorChecke == false) continue;
+                    _errMsg.AppendLine("文法に誤りがあります");
+                    return false;
                 }
+                sb.Append(addData);
             }
-
+            
             _convertText = sb.ToString();
             return true;
         }
@@ -109,7 +140,7 @@ namespace YMNTemplate
         /// <returns></returns>
         public string GetErrorMessage()
         {
-            return errMsg.ToString();
+            return _errMsg.ToString();
         }
 
         /// <summary>
@@ -135,12 +166,12 @@ namespace YMNTemplate
         {
             if (templateFile.Length == 0)
             {
-                errMsg.AppendLine(msg + "は指定されていません。");
+                _errMsg.AppendLine(msg + "は指定されていません。");
                 return false;
             }
             if (File.Exists(templateFile) == false)
             {
-                errMsg.AppendLine(msg + "は存在していません。");
+                _errMsg.AppendLine(msg + "は存在していません。");
                 return false;
             }
 
@@ -158,7 +189,7 @@ namespace YMNTemplate
             body = string.Empty;
             if (_enc == null)
             {
-                errMsg.AppendLine("読込ファイル形式の指定に誤りがあります。");
+                _errMsg.AppendLine("読込ファイル形式の指定に誤りがあります。");
                 return false;
             }
 
@@ -169,7 +200,7 @@ namespace YMNTemplate
             }
             catch
             {
-                errMsg.AppendLine(filename + "の読み込みに失敗しました。");
+                _errMsg.AppendLine(filename + "の読み込みに失敗しました。");
                 return false;
             }
             finally

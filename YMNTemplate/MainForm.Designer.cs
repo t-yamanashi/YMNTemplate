@@ -39,6 +39,7 @@
             this.dataSelectButton = new System.Windows.Forms.Button();
             this.fileFormatComboBox = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.errorCheckBox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // label1
@@ -154,11 +155,22 @@
             this.label3.TabIndex = 10;
             this.label3.Text = "読込ファイル形式";
             // 
+            // errorCheckBox
+            // 
+            this.errorCheckBox.AutoSize = true;
+            this.errorCheckBox.Location = new System.Drawing.Point(260, 62);
+            this.errorCheckBox.Name = "errorCheckBox";
+            this.errorCheckBox.Size = new System.Drawing.Size(179, 16);
+            this.errorCheckBox.TabIndex = 11;
+            this.errorCheckBox.Text = "文法エラーがあるときは即時終了";
+            this.errorCheckBox.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(595, 523);
+            this.Controls.Add(this.errorCheckBox);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.fileFormatComboBox);
             this.Controls.Add(this.dataSelectButton);
@@ -171,7 +183,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "MainForm";
-            this.Text = "YMNTemplate Ver 0.1";
+            this.Text = "YMNTemplate Ver 0.2";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -191,6 +203,7 @@
         private System.Windows.Forms.Button dataSelectButton;
         private System.Windows.Forms.ComboBox fileFormatComboBox;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.CheckBox errorCheckBox;
     }
 }
 
